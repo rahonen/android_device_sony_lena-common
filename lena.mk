@@ -18,7 +18,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product, vendor/sony/nile-common/nile-common-vendor.mk)
+$(call inherit-product, vendor/sony/lena-common/lena-common-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -264,7 +264,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.nile
+    android.hardware.light@2.0-service.lena
 
 # LiveDisplay
 PRODUCT_PACKAGES += \

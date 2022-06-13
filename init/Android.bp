@@ -15,7 +15,7 @@
 //
 
 cc_library_static {
-    name: "libinit.sony_nile",
+    name: "libinit.sony_lena",
     recovery_available: true,
     srcs: ["init_sdm660.cpp"],
     include_dirs: [

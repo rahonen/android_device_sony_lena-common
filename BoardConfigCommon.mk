@@ -18,7 +18,7 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 BOARD_VENDOR := sony
 
-VENDOR_PATH := device/sony/nile-common
+VENDOR_PATH := device/sony/lena-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(VENDOR_PATH)/include
 
@@ -214,7 +214,7 @@ include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy/vendor
 
 # Vendor Unification Init
-TARGET_INIT_VENDOR_LIB := //$(VENDOR_PATH):libinit.sony_nile
+TARGET_INIT_VENDOR_LIB := //$(VENDOR_PATH):libinit.sony_lena
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -233,4 +233,4 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
--include vendor/sony/nile-common/BoardConfigVendor.mk
+-include vendor/sony/lena-common/BoardConfigVendor.mk
