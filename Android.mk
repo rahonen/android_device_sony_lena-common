@@ -25,7 +25,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter discovery pioneer voyager kirin mermaid,$(TARGET_DEVICE)),)
+ifneq ($(TARGET_DEVICE),pdx213)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

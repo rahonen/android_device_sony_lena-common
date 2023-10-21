@@ -101,7 +101,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl:32 \
     android.hardware.soundtrigger@2.2-impl:32 \
     audio.bluetooth.default \
-    audio.primary.sdm660 \
+    audio.primary.sm6350 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
@@ -135,13 +135,17 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
+# fastbood
+PRODUCT_PACKAGES += \
+    fastbootd
+
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl:64 \
     android.hardware.boot@1.0-service \
     android.hardware.boot@1.0-impl.recovery \
-    bootctrl.sdm660 \
-    bootctrl.sdm660.recovery
+    bootctrl.sm6350 \
+    bootctrl.sm6350.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -161,17 +165,24 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0
 
 # Common init scripts
+# PRODUCT_PACKAGES += \
+#     fstab.qcom \
+#     init.qcom.cei.sh \
+#     init.qcom.devstart.sh \
+#     init.qcom.post_boot.sh \
+#     init.qcom.rc \
+#     init.qcom.sensors.sh \
+#     init.qcom.sh \
+#     init.qcom.usb.rc \
+#     init.recovery.qcom.rc \
+#     ueventd.qcom.rc
+
+# Platform specific init from Sony
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.qcom.cei.sh \
-    init.qcom.devstart.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.rc \
-    init.qcom.sensors.sh \
-    init.qcom.sh \
-    init.qcom.usb.rc \
-    init.recovery.qcom.rc \
-    ueventd.qcom.rc
+    tad.rc \
+    init.lena \
+    init.lena.pwr \
+    ueventd
 
 # Component overrides
 PRODUCT_COPY_FILES += \
@@ -186,9 +197,9 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
-    gralloc.sdm660 \
-    hwcomposer.sdm660 \
-    memtrack.sdm660 \
+    gralloc.sm6350 \
+    hwcomposer.sm6350 \
+    memtrack.sm6350 \
     libdisplayconfig \
     libqdMetaData.system \
     libtinyxml
@@ -286,13 +297,11 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
 # Modem switcher
-ifneq ($(filter %_kirin %_mermaid,$(TARGET_PRODUCT)),)
 PRODUCT_PACKAGES += \
     ModemConfig
 
 PRODUCT_COPY_FILES += \
     $(shell find $(LOCAL_PATH)/modem-config -type f -printf '%p:$(TARGET_COPY_OUT_VENDOR)/modemconf/%P\n')
-endif
 
 # Net
 PRODUCT_PACKAGES += \
@@ -375,10 +384,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 # Sensors
-PRODUCT_PACKAGES += \
-    android.frameworks.sensorservice@1.0.vendor \
-    android.hardware.sensors@1.0-impl:64 \
-    android.hardware.sensors@1.0-service
+# PRODUCT_PACKAGES += \
+#     android.frameworks.sensorservice@1.0.vendor \
+#     android.hardware.sensors@1.0-impl:64 \
+#     android.hardware.sensors@1.0-service
 
 # SimDetect
 PRODUCT_PACKAGES += \
